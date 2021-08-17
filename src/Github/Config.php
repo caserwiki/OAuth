@@ -1,8 +1,7 @@
 <?php
-namespace OAuth\Github;
+namespace Zx\OAuth\Github;
 
-
-use OAuth\BaseConfig;
+use Zx\OAuth\BaseConfig;
 
 class Config extends BaseConfig
 {

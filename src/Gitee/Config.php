@@ -1,8 +1,8 @@
 <?php
-namespace OAuth\Gitee;
+namespace Zx\OAuth\Gitee;
 
 
-use OAuth\BaseConfig;
+use Zx\OAuth\BaseConfig;
 
 class Config extends BaseConfig
 {

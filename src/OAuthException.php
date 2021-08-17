@@ -1,5 +1,5 @@
 <?php
-namespace OAuth;
+namespace Zx\OAuth;
 
 class OAuthException extends \Exception
 {

@@ -1,8 +1,7 @@
 <?php
-namespace OAuth\WeiXin;
+namespace Zx\OAuth\WeiXin;
 
-
-use OAuth\BaseConfig;
+use Zx\OAuth\BaseConfig;
 
 class Config extends BaseConfig
 {

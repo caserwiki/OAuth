@@ -1,8 +1,8 @@
 <?php
-namespace OAuth\AliPay;
+namespace Zx\OAuth\AliPay;
 
 
-use OAuth\BaseConfig;
+use Zx\OAuth\BaseConfig;
 
 class Config extends BaseConfig
 {

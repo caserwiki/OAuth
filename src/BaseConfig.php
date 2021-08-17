@@ -1,5 +1,5 @@
 <?php
-namespace OAuth;
+namespace Zx\OAuth;
 
 
 abstract class BaseConfig

@@ -1,8 +1,8 @@
 <?php
-namespace OAuth\QQ;
+namespace Zx\OAuth\QQ;
 
-use OAuth\BaseOAuth;
-use OAuth\OAuthException;
+use Zx\OAuth\BaseOAuth;
+use Zx\OAuth\OAuthException;
 
 class OAuth extends BaseOAuth
 {

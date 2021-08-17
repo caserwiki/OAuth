@@ -1,9 +1,8 @@
 <?php
-namespace OAuth\WeiXin;
+namespace Zx\OAuth\WeiXin;
 
-
-use OAuth\BaseOAuth;
-use OAuth\OAuthException;
+use Zx\OAuth\BaseOAuth;
+use Zx\OAuth\OAuthException;
 
 class OAuth extends BaseOAuth
 {

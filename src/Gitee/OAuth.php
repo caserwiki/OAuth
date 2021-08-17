@@ -1,8 +1,8 @@
 <?php
-namespace OAuth\Gitee;
+namespace Zx\OAuth\Gitee;
 
-use OAuth\BaseOAuth;
-use OAuth\OAuthException;
+use Zx\OAuth\BaseOAuth;
+use Zx\OAuth\OAuthException;
 
 class OAuth extends BaseOAuth
 {

@@ -29,12 +29,12 @@ class WeiXin
 {
     public function index()
     {
-        $config = new \OAuth\WeiXin\Config();
+        $config = new Zx\OAuth\WeiXin\Config();
         $config->setAppId('appid');
         $config->setState('state');
         $config->setRedirectUri('redirect_uri');
 
-        $oauth = new \OAuth\WeiXin\OAuth($config);
+        $oauth = new Zx\OAuth\WeiXin\OAuth($config);
         $url = $oauth->getAuthUrl();
 
         return $this->response()->redirect($url);
@@ -44,11 +44,11 @@ class WeiXin
     {
         $params = $this->request()->getQueryParams();
 
-        $config = new \OAuth\WeiXin\Config();
+        $config = new Zx\OAuth\WeiXin\Config();
         $config->setAppId('appid');
         $config->setSecret('secret');
 
-        $oauth = new \OAuth\WeiXin\OAuth($config);
+        $oauth = new Zx\OAuth\WeiXin\OAuth($config);
         $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
         $refreshToken = $oauth->getAccessTokenResult()['refresh_token'];
 
@@ -70,12 +70,12 @@ class Weibo
 {
     public function index()
     {
-        $config = new \OAuth\Weibo\Config();
+        $config = new Zx\OAuth\Weibo\Config();
         $config->setClientId('clientid');
         $config->setState('state');
         $config->setRedirectUri('redirect_uri');
 
-        $oauth = new \OAuth\Weibo\OAuth($config);
+        $oauth = new Zx\OAuth\Weibo\OAuth($config);
         $url = $oauth->getAuthUrl();
 
         return $this->response()->redirect($url);
@@ -85,12 +85,12 @@ class Weibo
     {
         $params = $this->request()->getQueryParams();
 
-        $config = new \OAuth\Weibo\Config();
+        $config = new Zx\OAuth\Weibo\Config();
         $config->setClientId('clientid');
         $config->setClientSecret('secret');
         $config->setRedirectUri('redirect_uri');
 
-        $oauth = new \OAuth\Weibo\OAuth($config);
+        $oauth = new Zx\OAuth\Weibo\OAuth($config);
         $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
 
         $userInfo = $oauth->getUserInfo($accessToken);
@@ -107,12 +107,12 @@ class AliPay
 {
     public function index()
     {
-        $config = new \OAuth\AliPay\Config();
+        $config = new Zx\OAuth\AliPay\Config();
         $config->setState('state');
         $config->setAppId('appid');
         $config->setRedirectUri('redirect_uri');
 
-        $oauth = new \OAuth\AliPay\OAuth($config);
+        $oauth = new Zx\OAuth\AliPay\OAuth($config);
         $url = $oauth->getAuthUrl();
         return $this->response()->redirect($url);
     }
@@ -121,11 +121,11 @@ class AliPay
     {
         $params = $this->request()->getQueryParams();
 
-        $config = new \OAuth\AliPay\Config();
+        $config = new Zx\OAuth\AliPay\Config();
         $config->setAppId('appid');
         $config->setAppPrivateKey('私钥');
 
-        $oauth = new \OAuth\AliPay\OAuth($config);
+        $oauth = new Zx\OAuth\AliPay\OAuth($config);
         $accessToken = $oauth->getAccessToken('state', $params['state'], $params['auth_code']);
         $refreshToken = $oauth->getAccessTokenResult()['alipay_system_oauth_token_response']['refresh_token'];
 
@@ -147,23 +147,23 @@ class Github
 {
     public function index()
     {
-        $config = new \OAuth\Github\Config();
+        $config = new Zx\OAuth\Github\Config();
         $config->setClientId('clientid');
         $config->setRedirectUri('redirect_uri');
         $config->setState('state');
-        $oauth = new \OAuth\Github\OAuth($config);
+        $oauth = new Zx\OAuth\Github\OAuth($config);
         $this->response()->redirect($oauth->getAuthUrl());
     }
 
     public function callback()
     {
         $params = $this->request()->getQueryParams();
-        $config = new \OAuth\Github\Config();
+        $config = new Zx\OAuth\Github\Config();
         $config->setClientId('clientid');
         $config->setClientSecret('secret');
         $config->setRedirectUri('redirect_uri');
 
-        $oauth = new \OAuth\Github\OAuth($config);
+        $oauth = new Zx\OAuth\Github\OAuth($config);
         $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
         $userInfo = $oauth->getUserInfo($accessToken);
         var_dump($userInfo);
@@ -179,11 +179,11 @@ class Gitee
 {
     public function index()
     {
-        $config = new \OAuth\Gitee\Config();
+        $config = new Zx\OAuth\Gitee\Config();
         $config->setState('state');
         $config->setClientId('clientid');
         $config->setRedirectUri('redirect_uri');
-        $oauth = new \OAuth\Gitee\OAuth($config);
+        $oauth = new Zx\OAuth\Gitee\OAuth($config);
         $this->response()->redirect($oauth->getAuthUrl());
     }
 
@@ -191,12 +191,12 @@ class Gitee
     {
         $params = $this->request()->getQueryParams();
 
-        $config = new \OAuth\Gitee\Config();
+        $config = new Zx\OAuth\Gitee\Config();
         $config->setClientId('client_id');
         $config->setClientSecret('secret');
         $config->setRedirectUri('redirect_uri');
 
-        $oauth = new \OAuth\Gitee\OAuth($config);
+        $oauth = new Zx\OAuth\Gitee\OAuth($config);
         $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
         $userInfo = $oauth->getUserInfo($accessToken);
         var_dump($userInfo);

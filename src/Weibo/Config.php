@@ -1,8 +1,7 @@
 <?php
-namespace OAuth\Weibo;
+namespace Zx\OAuth\Weibo;
 
-
-use OAuth\BaseConfig;
+use Zx\OAuth\BaseConfig;
 
 class Config extends BaseConfig
 {

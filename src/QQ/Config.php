@@ -1,8 +1,7 @@
 <?php
-namespace OAuth\QQ;
+namespace Zx\OAuth\QQ;
 
-
-use OAuth\BaseConfig;
+use Zx\OAuth\BaseConfig;
 
 class Config extends BaseConfig
 {
