@@ -1,5 +1,5 @@
 <?php
-namespace Zx\OAuth\WeiXin;
+namespace Zx\OAuth\Wechat;
 
 use Zx\OAuth\BaseOAuth;
 use Zx\OAuth\OAuthException;

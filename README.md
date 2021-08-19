@@ -25,16 +25,16 @@ composer require zhanxin/oauth
 
 微信/QQ:
 ```php
-class WeiXin
+class Wechat
 {
     public function index()
     {
-        $config = new Zx\OAuth\WeiXin\Config();
+        $config = new Zx\OAuth\Wechat\Config();
         $config->setAppId('appid');
         $config->setState('state');
         $config->setRedirectUri('redirect_uri');
 
-        $oauth = new Zx\OAuth\WeiXin\OAuth($config);
+        $oauth = new Zx\OAuth\Wechat\OAuth($config);
         $url = $oauth->getAuthUrl();
 
         return $this->response()->redirect($url);
@@ -44,22 +44,24 @@ class WeiXin
     {
         $params = $this->request()->getQueryParams();
 
-        $config = new Zx\OAuth\WeiXin\Config();
+        $config = new Zx\OAuth\Wechat\Config();
         $config->setAppId('appid');
         $config->setSecret('secret');
 
-        $oauth = new Zx\OAuth\WeiXin\OAuth($config);
-        $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
-        $refreshToken = $oauth->getAccessTokenResult()['refresh_token'];
-
-        $userInfo = $oauth->getUserInfo($accessToken);
-        var_dump($userInfo);
-
-        if (!$oauth->validateAccessToken($accessToken)) echo 'access_token 验证失败！' . PHP_EOL;
-
-
-        if (!$oauth->refreshToken($refreshToken)) echo 'access_token 续期失败！' . PHP_EOL;
-
+        $oauth = new Zx\OAuth\Wechat\OAuth($config);
+        try {
+            $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
+            $refreshToken = $oauth->getAccessTokenResult()['refresh_token'];
+    
+            $userInfo = $oauth->getUserInfo($accessToken);
+            var_dump($userInfo);
+    
+            if (!$oauth->validateAccessToken($accessToken)) echo 'access_token 验证失败！' . PHP_EOL;
+    
+    
+            if (!$oauth->refreshToken($refreshToken)) echo 'access_token 续期失败！' . PHP_EOL;
+        } catch (Exception $e) {
+        }
     }
 }
 ```
@@ -91,28 +93,31 @@ class Weibo
         $config->setRedirectUri('redirect_uri');
 
         $oauth = new Zx\OAuth\Weibo\OAuth($config);
-        $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
-
-        $userInfo = $oauth->getUserInfo($accessToken);
-        var_dump($userInfo);
-
-        if (!$oauth->validateAccessToken($accessToken)) echo 'access_token 验证失败！' . PHP_EOL;
+        try {
+            $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
+    
+            $userInfo = $oauth->getUserInfo($accessToken);
+            var_dump($userInfo);
+    
+            if (!$oauth->validateAccessToken($accessToken)) echo 'access_token 验证失败！' . PHP_EOL;
+        } catch (Exception $e) {
+        }
     }
 }
 ```
 
 支付宝:
 ```php
-class AliPay
+class alipay
 {
     public function index()
     {
-        $config = new Zx\OAuth\AliPay\Config();
+        $config = new Zx\OAuth\alipay\Config();
         $config->setState('state');
         $config->setAppId('appid');
         $config->setRedirectUri('redirect_uri');
 
-        $oauth = new Zx\OAuth\AliPay\OAuth($config);
+        $oauth = new Zx\OAuth\alipay\OAuth($config);
         $url = $oauth->getAuthUrl();
         return $this->response()->redirect($url);
     }
@@ -121,22 +126,25 @@ class AliPay
     {
         $params = $this->request()->getQueryParams();
 
-        $config = new Zx\OAuth\AliPay\Config();
+        $config = new Zx\OAuth\alipay\Config();
         $config->setAppId('appid');
         $config->setAppPrivateKey('私钥');
 
-        $oauth = new Zx\OAuth\AliPay\OAuth($config);
-        $accessToken = $oauth->getAccessToken('state', $params['state'], $params['auth_code']);
-        $refreshToken = $oauth->getAccessTokenResult()['alipay_system_oauth_token_response']['refresh_token'];
-
-        $userInfo = $oauth->getUserInfo($accessToken);
-        var_dump($userInfo);
-
-        if (!$oauth->validateAccessToken($accessToken)) echo 'access_token 验证失败！' . PHP_EOL;
-        var_dump($oauth->getAccessTokenResult());
-
-        if (!$oauth->refreshToken($refreshToken)) echo 'access_token 续期失败！' . PHP_EOL;
-        var_dump($oauth->getRefreshTokenResult());
+        $oauth = new Zx\OAuth\alipay\OAuth($config);
+        try {
+            $accessToken = $oauth->getAccessToken('state', $params['state'], $params['auth_code']);
+            $refreshToken = $oauth->getAccessTokenResult()['alipay_system_oauth_token_response']['refresh_token'];
+    
+            $userInfo = $oauth->getUserInfo($accessToken);
+            var_dump($userInfo);
+    
+            if (!$oauth->validateAccessToken($accessToken)) echo 'access_token 验证失败！' . PHP_EOL;
+            var_dump($oauth->getAccessTokenResult());
+    
+            if (!$oauth->refreshToken($refreshToken)) echo 'access_token 续期失败！' . PHP_EOL;
+            var_dump($oauth->getRefreshTokenResult());
+        } catch (Exception $e) {
+        }
     }
 }
 ```
@@ -164,11 +172,14 @@ class Github
         $config->setRedirectUri('redirect_uri');
 
         $oauth = new Zx\OAuth\Github\OAuth($config);
-        $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
-        $userInfo = $oauth->getUserInfo($accessToken);
-        var_dump($userInfo);
-
-        if (!$oauth->validateAccessToken($accessToken)) echo 'access_token 验证失败！' . PHP_EOL;
+        try {
+            $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
+            $userInfo = $oauth->getUserInfo($accessToken);
+            var_dump($userInfo);
+    
+            if (!$oauth->validateAccessToken($accessToken)) echo 'access_token 验证失败！' . PHP_EOL;
+        } catch (Exception $e) {
+        }
     }
 }
 ```
@@ -197,12 +208,15 @@ class Gitee
         $config->setRedirectUri('redirect_uri');
 
         $oauth = new Zx\OAuth\Gitee\OAuth($config);
-        $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
-        $userInfo = $oauth->getUserInfo($accessToken);
-        var_dump($userInfo);
-
-        if (!$oauth->validateAccessToken($accessToken)) echo 'access_token 验证失败！' . PHP_EOL;
-        var_dump($oauth->getAccessTokenResult());
+        try {
+            $accessToken = $oauth->getAccessToken('state', $params['state'], $params['code']);
+            $userInfo = $oauth->getUserInfo($accessToken);
+            var_dump($userInfo);
+    
+            if (!$oauth->validateAccessToken($accessToken)) echo 'access_token 验证失败！' . PHP_EOL;
+            var_dump($oauth->getAccessTokenResult());
+        } catch (Exception $e) {
+        }
     }
 }
 ```

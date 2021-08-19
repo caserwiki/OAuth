@@ -1,14 +1,22 @@
 {
-  "name": "zhanxin/oauth",
+  "name": "zhanxin/o-auth",
+  "description": "zx-center oauth o-auth",
   "type": "library",
-  "description": "zx-center oauth",
+  "keywords": ["oauth o-auth"],
+  "homepage": "https://github.com/caserwiki/OAuth",
   "license" : "Apache-2.0",
+  "authors": [
+    {
+      "name": "zx",
+      "email": "leowiki@foxmail.com"
+    }
+  ],
   "require": {
     "php": ">=7.1.0"
   },
   "autoload": {
     "psr-4": {
-      "Oauth\\": "src/"
+      "Zx\\OAuth\\": "src/"
     }
   }
 }

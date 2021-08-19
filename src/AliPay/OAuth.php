@@ -1,5 +1,5 @@
 <?php
-namespace Zx\OAuth\AliPay;
+namespace Zx\OAuth\Alipay;
 
 use Zx\OAuth\BaseOAuth;
 use Zx\OAuth\OAuthException;
