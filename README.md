@@ -7,7 +7,7 @@
 ## 安装
 
 ```
-composer require zhanxin/oauth
+composer require zhanxin/o-auth
 ```
 
 ## 说明
